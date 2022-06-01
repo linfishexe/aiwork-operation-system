@@ -15,16 +15,27 @@
     <script src="./jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- <div id="loading">
+    <div id="loading">
         <div class="box"></div>
         <h6>Loading...</h6>
-    </div> -->
+    </div>
     <div class="ensure">
         <div class="mask"></div>
         <div class="hint">
             <p>確認要執行這個方案嗎?</p>
            <button class="yes">確定</button>
            <button class="no">取消</button>
+        </div>
+    </div>
+    <div class="info">
+        <div class="mask"></div>
+        <div class="inf">
+            <div class="hint">
+            <p>時長： 2h 成功率： 95% <br>
+                有什麼風險： 無 有無後遺症： 無<br>
+                適用程度： 98% 適用麻醉種類：半身麻醉 </p>
+            <button class="ok">ok</button>
+            </div>
         </div>
     </div>
     <div id="box" class="box_hide">
@@ -189,11 +200,11 @@
                         <img src="./check .png" >
                     </div>
                     <div class="o_info">
-                        <div class="heart">心跳：<span></span></div>
-                        <div class="blood_pressure">血壓：<span></span></div>
-                        <div class="mm">血氧飽和度：<span></span></div>
-                        <div class="breathe">呼吸：<span></span></div>
-                        <div class="tempertrue">體溫：<span></span></div>
+                        <div class="heart">心跳：<span></span>bpm</div>
+                        <div class="blood_pressure">血壓：<span></span>mmHg</div>
+                        <div class="mm">血氧飽和度：<span></span>mmHg</div>
+                        <div class="breathe">呼吸：<span></span>bpm</div>
+                        <div class="tempertrue">體溫：<span></span>度</div>
                     </div>
                 </div>
             </div>
@@ -260,9 +271,15 @@
     $('.yes,.no').click(()=>{//arrowfunction
         $('.ensure').fadeOut(500);
     });
+    $('.ok').click(()=>{//arrowfunction
+        $('.info').fadeOut(500);
+    });
 // -----------------------------------------------------
     $('.way .chooce').click(()=>{
         $('.ensure').fadeIn(500);
+    });
+    $('.way .explain').click(()=>{
+        $('.info').fadeIn(500);
     });
 // ---------------------------------------------------
     $('.yes').click(()=>{
@@ -279,14 +296,32 @@
         var heart = setInterval(function(){
             let h_num = Math.floor(Math.random() * 10 + 60);
             $('.heart>span').text(h_num);
-            if(count>4){clearInterval(heart);}
+            if(count>39){clearInterval(heart);}
             count++;
         },1000);
         var pressure = setInterval(function(){
             let p_num = Math.floor(Math.random() * 10 + 90);
             let p1_num = Math.floor(Math.random() * 20 + 90);
-            $('.blood_pressure>span').text(p_num +'/' +p1_num);
-            if(count>4){clearInterval(pressure);}
+            $('.blood_pressure>span').text(p_num +'/' +p1_num );
+            if(count>39){clearInterval(pressure);}
+            count++;
+        },1000);
+        var mm = setInterval(function(){
+            let m_num = Math.floor(Math.random() * 10 + 80);
+            $('.mm>span').text(m_num );
+            if(count>39){clearInterval(mm);}
+            count++;
+        },1000);
+        var breathe = setInterval(function(){
+            let b_num = Math.floor(Math.random() * 5 + 12);
+            $('.breathe>span').text(b_num );
+            if(count>39){clearInterval(breathe);}
+            count++;
+        },1000);
+        var tempertrue = setInterval(function(){
+            let t_num = Math.floor(Math.random() * 0.2 + 36.9);
+            $('.tempertrue>span').text(t_num );
+            if(count>39){clearInterval(tempertrue);}
             count++;
         },1000);
     });
